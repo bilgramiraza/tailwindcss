@@ -1,26 +1,21 @@
 import './App.css'
 import { useState } from 'react';
-import {HiMiniPencil} from 'react-icons/hi2'
 import FormInput from './components/InputGroup';
 
 function App() {
   const [username, setUsername] = useState('');
-  const [isUsernameValid, setIsUsernameValid] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!e.target.checkValidity()) {
-      setIsUsernameValid(false);
       return;
     }
-    setIsUsernameValid(true);
     // Process the form submission here (e.g., API call, etc.)
   };
 
 
   return (<>
     <h1 className='text-3xl font-bold underline'>Vite + React</h1>
-    <HiMiniPencil className=''/>
     <form className="grid grid-cols-1 md:grid-cols-4 gap-4 " noValidate onSubmit={handleSubmit}>
       <div className="col-span-4 md:col-span-1">
         <FormInput
@@ -31,7 +26,6 @@ function App() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          isValid={isUsernameValid}
         />
       </div>
       <div className="col-span-4">
